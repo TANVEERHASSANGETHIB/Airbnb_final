@@ -1,0 +1,53 @@
+[
+    {
+      "image": "https://example.com/images/beach-house.jpg",
+      "title": "Beautiful Beach House",
+      "propertyType": "Entire home",
+      "guests": 6,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "price": 150,
+      "rating": 4.5
+    },
+    {
+      "image": "https://example.com/images/mountain-cabin.jpg",
+      "title": "Cozy Mountain Cabin",
+      "propertyType": "Private room",
+      "guests": 2,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "price": 90,
+      "rating": 4.7
+    },
+    {
+      "image": "https://example.com/images/lakehouse.jpg",
+      "title": "Luxury Lake House",
+      "propertyType": "Entire home",
+      "guests": 8,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "price": 220,
+      "rating": 4.8
+    },
+    {
+      "image": "https://example.com/images/city-apartment.jpg",
+      "title": "Modern City Apartment",
+      "propertyType": "Entire home",
+      "guests": 4,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "price": 120,
+      "rating": 4.2
+    },
+    {
+      "image": "https://example.com/images/forest-cottage.jpg",
+      "title": "Secluded Forest Cottage",
+      "propertyType": "Private room",
+      "guests": 2,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "price": 80,
+      "rating": 4.6
+    }
+  ]
+  
