@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import ListingCard from './ListingCard';
-import Data from './Data.json'; // Corrected import path
+import ListingCard from './listing_card';
+import Data from '../Data.json';
+
+
 
 const ListingPage = () => {
+  console.log(Data);
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
+    
     // Set the initial data from the JSON file
     setListings(Data);
   }, []);
