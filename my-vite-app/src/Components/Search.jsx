@@ -8,7 +8,7 @@ export const Search = () => {
         placeholder="Search..." 
         style={{ marginRight: '10px', padding: '5px' }} 
       />
-      <div id="search_btn">
+      <div id="search_btn">   
         <button>
           Search
         </button>
