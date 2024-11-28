@@ -1,34 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ListingCard from './listing_card';
-import Data from '../Data.json';
-
-
+import Fetch_Listing from '../Pages/Fetch_Listing';
 
 const ListingPage = () => {
-  console.log(Data);
-  const [listings, setListings] = useState([]);
-
-  useEffect(() => {
-    
-    // Set the initial data from the JSON file
-    setListings(Data);
-  }, []);
+  const [listings, setListings] = useState([]); 
 
   return (
     <div className="listing-page">
-      {listings.map((listing, index) => (
-        <ListingCard
-          key={index}
-          image={listing.image}
-          title={listing.title}
-          propertyType={listing.propertyType}
-          guests={listing.guests}
-          bedrooms={listing.bedrooms}
-          bathrooms={listing.bathrooms}
-          price={listing.price}
-          rating={listing.rating}
-        />
-      ))}
+      <Fetch_Listing setListings={setListings} />  
+
+      {listings.length > 0 ? (
+        listings.map((listing, index) => (
+          <ListingCard
+            key={index}
+            image={listing.image}
+            title={listing.title}
+            propertyType={listing.propertyType}
+            guests={listing.guests}
+            bedrooms={listing.bedrooms}
+            bathrooms={listing.bathrooms}
+            price={listing.price}
+            rating={listing.rating}
+          />
+        ))
+      ) : (
+        <p>No listings available</p>
+      )}
     </div>
   );
 };
