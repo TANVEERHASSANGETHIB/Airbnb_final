@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Style/listing_card.css'
 
 const ListingCard = ({ image, title, propertyType, guests, bedrooms, bathrooms, price, rating }) => {
   return (
