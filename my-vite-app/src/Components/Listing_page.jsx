@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import ListingCard from './listing_card';
+import ListingCard from '../Components/Listing_card';
 import Fetch_Listing from '../Pages/Fetch_Listing';
+import '../Style/ListingPage.css';
 
 const ListingPage = () => {
-  const [listings, setListings] = useState([]); 
+  const [listings, setListings] = useState([]);
 
   return (
     <div className="listing-page">
-      <Fetch_Listing setListings={setListings} />  
+      <Fetch_Listing setListings={setListings} />
 
       {listings.length > 0 ? (
         listings.map((listing, index) => (
@@ -24,7 +25,7 @@ const ListingPage = () => {
           />
         ))
       ) : (
-        <p>No listings available</p>
+        <p className="no-listings">No listings available</p>
       )}
     </div>
   );
