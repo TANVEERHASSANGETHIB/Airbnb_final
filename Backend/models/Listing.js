@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const ListingSchema = new mongoose.Schema({
+  id: { type: Number, required: true },
   title: { type: String, required: true },
   propertyType: { type: String, required: true },
   image: { type: String, required: true },
