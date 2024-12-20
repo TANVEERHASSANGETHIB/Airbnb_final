@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import ListingCard from '../Components/Listing_card';
-import Fetch_Listing from '../Pages/Fetch_Listing';
+import React, { useState, useEffect } from 'react';
+import ListingCard from '../Components/ListingCard';
 import '../Style/ListingPage.css';
 
 const ListingPage = () => {
   const [listings, setListings] = useState([]);
 
+  useEffect(() => {
+    fetch('http://localhost:3000/listing')
+      .then(response => response.json())
+      .then(data => setListings(data))
+      .catch(error => console.error('Error fetching listings:', error));
+  }, []);
+
   return (
     <div className="listing-page">
-      <Fetch_Listing setListings={setListings} />
-
       {listings.length > 0 ? (
-        listings.map((listing, index) => (
+        listings.map((listing) => (
           <ListingCard
-            key={index}
+            key={listing.id}
             image={listing.image}
             title={listing.title}
             propertyType={listing.propertyType}
@@ -22,6 +26,7 @@ const ListingPage = () => {
             bathrooms={listing.bathrooms}
             price={listing.price}
             rating={listing.rating}
+            slug={listing.title.replace(/\s+/g, '-').toLowerCase()}
           />
         ))
       ) : (
