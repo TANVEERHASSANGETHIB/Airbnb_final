@@ -12,12 +12,12 @@ const ListingSchema = new mongoose.Schema({
   bedrooms: { type: Number, required: true },
   bathrooms: { type: Number, required: true },
   description: { type: String, required: true },
-  slug: { type: String, required: true, unique: true } 
+  slug: { type: String, required: true, unique: true }, // Ensure it's required and unique
 });
 
 
-ListingSchema.pre('save', function (next) {
-  if (this.isNew || this.isModified('title')) {
+ListingSchema.pre('validate', function (next) {
+  if (this.title && !this.slug) {
     this.slug = slugify(this.title, { lower: true, strict: true });
   }
   next();
