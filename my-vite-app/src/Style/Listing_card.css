@@ -77,3 +77,16 @@
     font-size: 13px;
   }
 }
+
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.listing-link:visited {
+  color: inherit;
+}
+
+.listing-link:hover {
+  text-decoration: none;
+}

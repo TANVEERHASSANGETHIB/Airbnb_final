@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ListingCard from '../Components/ListingCard';
+import ListingCard from '../Components/Listing_card';
 import '../Style/ListingPage.css';
 
 const ListingPage = () => {
