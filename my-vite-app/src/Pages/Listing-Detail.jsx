@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ListingDetail = () => {
-  const { slug } = useParams(); // Get the slug from the URL
+  const { slug } = useParams(); 
   const [listing, setListing] = useState(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ListingDetail = () => {
     };
 
     fetchListing();
-  }, [slug]); // Run the fetch when the slug changes
+  }, [slug]); 
 
   if (!listing) {
     return <div>Loading...</div>;
@@ -34,7 +34,7 @@ const ListingDetail = () => {
       <p>Guests: {listing.guests}</p>
       <p>Bedrooms: {listing.bedrooms}</p>
       <p>Bathrooms: {listing.bathrooms}</p>
-      {/* Add more features here if needed */}
+     
     </div>
   );
 };
