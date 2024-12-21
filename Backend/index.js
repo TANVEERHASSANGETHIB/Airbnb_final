@@ -36,6 +36,25 @@ app.get('/listing/:slug', async (req, res) => {
     res.status(500).json({ message: 'Internal server error while fetching listing' });
   }
 });
+app.get('/search', async (req, res) => {
+  const { location } = req.query; 
+  try {
+    
+    const listings = await Listing.find({
+      locations: { $in: [location] } 
+    });
+    
+    if (listings.length === 0) {
+      return res.status(404).json({ message: 'No listings found for this location' });
+    }
+
+    res.status(200).json(listings);
+  } catch (error) {
+    console.error('Error searching listings:', error);
+    res.status(500).json({ message: 'Error searching listings' });
+  }
+});
+
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found' });
