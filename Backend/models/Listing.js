@@ -4,6 +4,7 @@ const listingSchema = new mongoose.Schema({
   title: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
   description: { type: String },
+  locations: { type: [String], required: true },
   price: { type: Number },
   guests: { type: Number },
   bedrooms: { type: Number },

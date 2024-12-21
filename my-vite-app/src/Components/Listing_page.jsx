@@ -20,13 +20,14 @@ const ListingPage = () => {
             key={listing.id}
             image={listing.image}
             title={listing.title}
+            location={listing.location}
             propertyType={listing.propertyType}
             guests={listing.guests}
             bedrooms={listing.bedrooms}
             bathrooms={listing.bathrooms}
             price={listing.price}
             rating={listing.rating}
-            slug={listing.title.replace(/\s+/g, '-').toLowerCase()}
+            slug={listing.slug.replace(/\s+/g, '-').toLowerCase()}
           />
         ))
       ) : (

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../Style/Listing-Detail.css'
+import '../Style/Listing-Detail.css';
 
 const ListingDetail = () => {
-  const { slug } = useParams(); 
+  const { slug } = useParams();
   const [listing, setListing] = useState(null);
 
   useEffect(() => {
@@ -38,10 +38,13 @@ const ListingDetail = () => {
         <div className="details">
           <h1>{listing.title}</h1>
           <p>{listing.description}</p>
+          <h3>Locations:</h3>
+          {listing.locations && listing.locations.map((location, index) => (
+            <p key={index}>{location}</p>
+          ))}
           <div className="price">${listing.price}</div>
         </div>
       </div>
-      
       <div className="features">
         <p><i className="fa fa-users"></i> <span>{listing.guests} Guests</span></p>
         <p><i className="fa fa-bed"></i> <span>{listing.bedrooms} Bedrooms</span></p>
@@ -49,7 +52,6 @@ const ListingDetail = () => {
         <p><i className="fa fa-star"></i> <span>{listing.rating} Rating</span></p>
         <p><i className="fa fa-home"></i> <span>{listing.propertyType}</span></p>
       </div>
-
       <div className="amenities">
         <h2>Amenities</h2>
         {listing.amenities.lockOnBedroomDoor && <p><i className="fa fa-lock"></i> Lock on Bedroom Door</p>}

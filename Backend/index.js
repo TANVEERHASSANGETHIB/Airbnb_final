@@ -20,22 +20,20 @@ app.get('/listing', async (req, res) => {
     const listings = await Listing.find();
     res.status(200).json(listings);
   } catch (error) {
-    console.error('Error fetching listings:', error);
     res.status(500).json({ message: 'Server error while fetching listings' });
   }
 });
 
 app.get('/listing/:slug', async (req, res) => {
-  const { slug } = req.params;
+  const { slug } = req.params; 
   try {
-    const listing = await Listing.findOne({ slug: slug });
+    const listing = await Listing.findOne({ slug: slug }); 
     if (!listing) {
       return res.status(404).json({ message: 'Listing not found' });
     }
-    res.json(listing);
+    res.status(200).json(listing);
   } catch (error) {
-    console.error('Error fetching listing:', error);
-    res.status(500).json({ message: 'Server error while fetching listing' });
+    res.status(500).json({ message: 'Internal server error while fetching listing' });
   }
 });
 

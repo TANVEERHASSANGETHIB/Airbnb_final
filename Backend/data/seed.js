@@ -4,7 +4,7 @@ const Listing = require('../models/Listing');
 const mongoURI = 'mongodb+srv://airbnb-app:bscs22144@cluster0.7w7j4.mongodb.net/airbnb-app?retryWrites=true&w=majority';
 
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected...'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
@@ -13,6 +13,7 @@ const listings = [
     title: 'Luxury Villa',
     slug: 'luxury-villa',
     description: 'A beautiful luxury villa with a city skyline view.',
+    locations: ['New York'],
     price: 350,
     guests: 4,
     bedrooms: 2,
@@ -29,18 +30,21 @@ const listings = [
       freeWasher: true,
       freeDryer: true,
       hairDryer: true,
-      carbonMonoxideAlarm: true
+      carbonMonoxideAlarm: true,
     },
-    images: ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg']
-  }
+    images: ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg'],
+  },
 ];
 
 const seedListings = async () => {
   try {
+    await Listing.deleteMany({});
     await Listing.insertMany(listings);
-    console.log('Listings seeded successfully');
+    console.log('Listings seeded successfully.');
+    mongoose.connection.close();
   } catch (error) {
     console.error('Error seeding listings:', error);
+    mongoose.connection.close();
   }
 };
 
