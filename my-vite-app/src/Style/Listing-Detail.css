@@ -1,0 +1,66 @@
+.listing-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .listing-header {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  
+  .image-container {
+    width: 50%;
+    padding-right: 20px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .details {
+    width: 50%;
+  }
+  
+  .details h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .details p {
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: green;
+  }
+  
+  .features {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .features p {
+    width: 50%;
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+  
+  .amenities {
+    margin-top: 40px;
+  }
+  
+  .amenities h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .amenities p {
+    font-size: 1.1rem;
+  }
+  

@@ -1,26 +1,30 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
 
-const ListingSchema = new mongoose.Schema({
-  id: { type: Number, required: true },
+const listingSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  propertyType: { type: String, required: true },
-  image: { type: String, required: true },
-  price: { type: Number, required: true },
-  rating: { type: Number, required: true },
-  guests: { type: Number, required: true },
-  bedrooms: { type: Number, required: true },
-  bathrooms: { type: Number, required: true },
-  description: { type: String, required: true },
-  slug: { type: String, required: true, unique: true }, // Ensure it's required and unique
+  slug: { type: String, required: true, unique: true },
+  description: { type: String },
+  price: { type: Number },
+  guests: { type: Number },
+  bedrooms: { type: Number },
+  bathrooms: { type: Number },
+  rating: { type: Number },
+  propertyType: { type: String },
+  amenities: { 
+    lockOnBedroomDoor: Boolean,
+    citySkylineView: Boolean,
+    kitchen: Boolean,
+    wifi: Boolean,
+    dedicatedWorkspace: Boolean,
+    hdtv: Boolean,
+    freeWasher: Boolean,
+    freeDryer: Boolean,
+    hairDryer: Boolean,
+    carbonMonoxideAlarm: Boolean
+  },
+  images: [String]
 });
 
+const Listing = mongoose.model('Listing', listingSchema);
 
-ListingSchema.pre('validate', function (next) {
-  if (this.title && !this.slug) {
-    this.slug = slugify(this.title, { lower: true, strict: true });
-  }
-  next();
-});
-
-module.exports = mongoose.model('Listing', ListingSchema);
+module.exports = Listing;

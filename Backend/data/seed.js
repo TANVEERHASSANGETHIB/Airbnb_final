@@ -1,62 +1,47 @@
-const mongoose = require('../db');
+const mongoose = require('mongoose');
 const Listing = require('../models/Listing');
 
-const seedData = [
+const mongoURI = 'mongodb+srv://airbnb-app:bscs22144@cluster0.7w7j4.mongodb.net/airbnb-app?retryWrites=true&w=majority';
+
+mongoose
+  .connect(mongoURI)
+  .then(() => console.log('MongoDB connected...'))
+  .catch((err) => console.error('MongoDB connection error:', err));
+
+const listings = [
   {
-    id: 1,
-    title: 'Cozy Apartment',
-    propertyType: 'Apartment',
-    image: 'https://example.com/image1.jpg',
-    price: 100,
-    rating: 4.5,
-    guests: 2,
-    bedrooms: 1,
-    bathrooms: 1,
-    description: 'A cozy apartment in the city center.',
-  },
-  {
-    id: 2,
     title: 'Luxury Villa',
-    propertyType: 'Villa',
-    image: 'https://example.com/image2.jpg',
-    price: 300,
-    rating: 5,
-    guests: 6,
-    bedrooms: 3,
-    bathrooms: 2,
-    description: 'A luxury villa with a pool and stunning views.',
-  },
-  {
-    id: 3,
-    title: 'Rustic Cabin',
-    propertyType: 'Cabin',
-    image: 'https://example.com/image3.jpg',
-    price: 150,
-    rating: 4.8,
+    slug: 'luxury-villa',
+    description: 'A beautiful luxury villa with a city skyline view.',
+    price: 350,
     guests: 4,
     bedrooms: 2,
-    bathrooms: 1,
-    description: 'A charming cabin in the woods.',
-  },
+    bathrooms: 2,
+    rating: 4.9,
+    propertyType: 'Villa',
+    amenities: {
+      lockOnBedroomDoor: true,
+      citySkylineView: true,
+      kitchen: true,
+      wifi: true,
+      dedicatedWorkspace: true,
+      hdtv: true,
+      freeWasher: true,
+      freeDryer: true,
+      hairDryer: true,
+      carbonMonoxideAlarm: true
+    },
+    images: ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg']
+  }
 ];
 
-const seedDB = async () => {
+const seedListings = async () => {
   try {
-    await Listing.deleteMany(); 
-    console.log('Previous data removed.');
-
-    for (const data of seedData) {
-      const listing = new Listing(data);
-      await listing.save(); 
-      console.log(`Inserted: ${listing.title}`);
-    }
-
-    console.log('Seed data inserted successfully.');
-  } catch (err) {
-    console.error('Error seeding the database:', err);
-  } finally {
-    mongoose.connection.close();
+    await Listing.insertMany(listings);
+    console.log('Listings seeded successfully');
+  } catch (error) {
+    console.error('Error seeding listings:', error);
   }
 };
 
-seedDB();
+seedListings();
