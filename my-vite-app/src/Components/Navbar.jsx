@@ -1,6 +1,8 @@
 import React from 'react';
 import { Search } from './Search';
+import {SignUp} from '../Pages/SignUp'
 import '../Style/Navbar.css';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
@@ -14,7 +16,8 @@ export const Navbar = () => {
       <div id="usermenu">
         <ul>
           <li>Login</li>
-          <li>Signup</li>
+          <Link to="/signup">Sign Up</Link>
+          
         </ul>
       </div>
     </div>
